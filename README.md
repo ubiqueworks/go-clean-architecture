@@ -15,7 +15,7 @@ git clone https://github.com/ubiqueworks/go-clean-architecture.git $GOPATH/src/g
 
 Go to the root directory of the project.
 ```
-cd $GOPATH/src/src/github.com/ubiqueworks/go-clean-architecture
+cd $GOPATH/src/github.com/ubiqueworks/go-clean-architecture
 ```
 
 Ensure dependencies

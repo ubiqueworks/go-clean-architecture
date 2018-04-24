@@ -1,0 +1,18 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "go_default_library",
+    srcs = [
+        "get_messages.go",
+        "store_publish_message.go",
+    ],
+    importpath = "github.com/ubiqueworks/go-clean-architecture/service/producer/usecase",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//framework/component/natsbroker:go_default_library",
+        "//service/producer/domain:go_default_library",
+        "//service/producer/repository:go_default_library",
+        "//service/shared/messaging:go_default_library",
+        "//vendor/github.com/rs/zerolog:go_default_library",
+    ],
+)

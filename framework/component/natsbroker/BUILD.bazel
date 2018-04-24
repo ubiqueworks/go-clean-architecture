@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "go_default_library",
+    srcs = ["natsbroker.go"],
+    importpath = "github.com/ubiqueworks/go-clean-architecture/framework/component/natsbroker",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//framework:go_default_library",
+        "//vendor/github.com/golang/protobuf/proto:go_default_library",
+        "//vendor/github.com/nats-io/go-nats:go_default_library",
+        "//vendor/github.com/rs/zerolog:go_default_library",
+        "//vendor/gopkg.in/urfave/cli.v1:go_default_library",
+    ],
+)

@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "go_default_library",
+    srcs = ["rpc_server.go"],
+    importpath = "github.com/ubiqueworks/go-clean-architecture/framework/component/transport/rpc",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//framework:go_default_library",
+        "//framework/util:go_default_library",
+        "//vendor/github.com/rs/zerolog:go_default_library",
+        "//vendor/google.golang.org/grpc:go_default_library",
+        "//vendor/gopkg.in/urfave/cli.v1:go_default_library",
+    ],
+)

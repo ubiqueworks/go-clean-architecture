@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "go_default_library",
+    srcs = ["message.go"],
+    importpath = "github.com/ubiqueworks/go-clean-architecture/service/producer/repository",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//framework/component/cloudstore:go_default_library",
+        "//service/producer/domain:go_default_library",
+        "//vendor/cloud.google.com/go/datastore:go_default_library",
+        "//vendor/github.com/rs/zerolog:go_default_library",
+    ],
+)

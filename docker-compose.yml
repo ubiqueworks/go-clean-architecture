@@ -1,0 +1,46 @@
+version: '3.6'
+services:
+  nats:
+    image: nats-streaming:latest
+    command: -p 4222 -m 8222 -store file -dir /data
+    ports:
+      - 4222:4222
+      - 8222:8222
+    volumes:
+      - nats-data:/data
+  datastore:
+    image: google/cloud-sdk:latest
+    command:
+      /bin/bash -c
+        "gcloud config set project uncouch-platform && gcloud beta emulators datastore start --data-dir /data/datastore --host-port 0.0.0.0:8432"
+    ports:
+     - 8432:8432
+    volumes:
+      - datastore-data:/data/datastore
+  go-clean-consumer:
+    image: go-clean-consumer
+    command: --debug
+    environment:
+      - NATS_URL=nats://nats:4222
+      - LOG_FORMAT=human
+    labels:
+      - traefik.enable=false
+    depends_on:
+      - nats
+  go-clean-producer:
+    image: go-clean-producer
+    command: --debug
+    environment:
+      - CLOUD_PROJECT_ID=go-clean-sample
+      - DATASTORE_EMULATOR_HOST=datastore:8432
+      - NATS_URL=nats://nats:4222
+      - LOG_FORMAT=human
+    ports:
+     - 8888:8888
+     - 9999:9999
+    depends_on:
+      - datastore
+      - nats
+volumes:
+  datastore-data:
+  nats-data:

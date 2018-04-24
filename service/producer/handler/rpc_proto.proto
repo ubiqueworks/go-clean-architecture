@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package handler;
+
+import "google/protobuf/timestamp.proto";
+
+service ProducerRPC {
+    rpc GetMessages (Empty) returns (GetMessagesReply) {}
+    rpc PublishMessage (PublishMessageRequest) returns (Empty) {}
+}
+
+message Message {
+    string name = 1;
+    string message = 2;
+    google.protobuf.Timestamp createdAt = 3;
+}
+
+message GetMessagesRequest {
+    string requestId = 1;
+    Message message = 2;
+}
+
+message GetMessagesReply {
+    bool exists = 1;
+    repeated Message messages = 2;
+}
+
+message PublishMessageRequest {
+    Message message = 1;
+}
+
+message Empty {
+}

@@ -1,0 +1,45 @@
+load("@io_bazel_rules_go//proto:def.bzl", "go_proto_library")
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "go_default_library",
+    srcs = [
+        "handler.go",
+        "http.go",
+        "rpc.go",
+    ],
+    embed = [":handler_go_proto"],
+    importpath = "github.com/ubiqueworks/go-clean-architecture/service/producer/handler",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//framework:go_default_library",
+        "//framework/component/cloudstore:go_default_library",
+        "//framework/component/natsbroker:go_default_library",
+        "//framework/component/transport/http:go_default_library",
+        "//framework/util:go_default_library",
+        "//service/producer/domain:go_default_library",
+        "//service/producer/repository:go_default_library",
+        "//service/producer/usecase:go_default_library",
+        "//vendor/github.com/gin-gonic/gin:go_default_library",
+        "//vendor/github.com/gin-gonic/gin/binding:go_default_library",
+        "//vendor/github.com/golang/protobuf/ptypes:go_default_library",
+        "//vendor/github.com/rs/zerolog:go_default_library",
+        "//vendor/google.golang.org/grpc:go_default_library",
+        "//vendor/gopkg.in/urfave/cli.v1:go_default_library",
+    ],
+)
+
+proto_library(
+    name = "handler_proto",
+    srcs = ["rpc_proto.proto"],
+    visibility = ["//visibility:public"],
+    deps = ["@com_google_protobuf//:timestamp_proto"],
+)
+
+go_proto_library(
+    name = "handler_go_proto",
+    compilers = ["@io_bazel_rules_go//proto:go_grpc"],
+    importpath = "github.com/ubiqueworks/go-clean-architecture/service/producer/handler",
+    proto = ":handler_proto",
+    visibility = ["//visibility:public"],
+)

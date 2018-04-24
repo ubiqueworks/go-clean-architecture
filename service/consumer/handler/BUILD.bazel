@@ -1,0 +1,17 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "go_default_library",
+    srcs = ["handler.go"],
+    importpath = "github.com/ubiqueworks/go-clean-architecture/service/consumer/handler",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//framework:go_default_library",
+        "//framework/component/natsbroker:go_default_library",
+        "//service/consumer/usecase:go_default_library",
+        "//service/shared/messaging:go_default_library",
+        "//vendor/github.com/nats-io/go-nats:go_default_library",
+        "//vendor/github.com/rs/zerolog:go_default_library",
+        "//vendor/gopkg.in/urfave/cli.v1:go_default_library",
+    ],
+)

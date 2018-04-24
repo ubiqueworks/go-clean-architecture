@@ -1,0 +1,18 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "go_default_library",
+    srcs = [
+        "const.go",
+        "service.go",
+    ],
+    importpath = "github.com/ubiqueworks/go-clean-architecture/framework",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/deckarep/golang-set:go_default_library",
+        "//vendor/github.com/hashicorp/go-multierror:go_default_library",
+        "//vendor/github.com/rs/zerolog:go_default_library",
+        "//vendor/github.com/rs/zerolog/log:go_default_library",
+        "//vendor/gopkg.in/urfave/cli.v1:go_default_library",
+    ],
+)

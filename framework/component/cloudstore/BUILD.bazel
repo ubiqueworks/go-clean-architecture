@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "go_default_library",
+    srcs = ["cloudstore.go"],
+    importpath = "github.com/ubiqueworks/go-clean-architecture/framework/component/cloudstore",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//framework:go_default_library",
+        "//vendor/cloud.google.com/go/datastore:go_default_library",
+        "//vendor/github.com/rs/zerolog:go_default_library",
+        "//vendor/gopkg.in/urfave/cli.v1:go_default_library",
+    ],
+)

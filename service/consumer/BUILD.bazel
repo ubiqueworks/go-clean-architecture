@@ -1,0 +1,31 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+load("@io_bazel_rules_docker//go:image.bzl", "go_image")
+
+go_library(
+    name = "go_default_library",
+    srcs = ["main.go"],
+    importpath = "github.com/ubiqueworks/go-clean-architecture/service/consumer",
+    visibility = ["//visibility:private"],
+    deps = [
+        "//framework:go_default_library",
+        "//framework/component/natsbroker:go_default_library",
+        "//service/consumer/handler:go_default_library",
+    ],
+)
+
+go_binary(
+    name = "consumer",
+    embed = [":go_default_library"],
+    visibility = ["//visibility:public"],
+    x_defs = {
+        "main.Name": "go-clean-producer",
+        "main.GitCommit": "{GIT_COMMIT}",
+        "main.Version": "0.1.0",
+    },
+)
+
+go_image(
+    name = "image",
+    binary = ":consumer",
+    visibility = ["//visibility:public"],
+)

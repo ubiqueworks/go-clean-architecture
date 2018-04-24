@@ -10,7 +10,7 @@
 
 Make sure GOPATH is set and clone into the correct directory under GOPATH
 ```
-git clone https://github.com/ubiqueworks/go-clean-architecture.git $GOPATH/src/src/github.com/ubiqueworks/go-clean-architecture
+git clone https://github.com/ubiqueworks/go-clean-architecture.git $GOPATH/src/github.com/ubiqueworks/go-clean-architecture
 ```
 
 Go to the root directory of the project.

@@ -6,9 +6,17 @@
 * Bazel
 * GoImports
 
-#### Running the project
+#### Running the project (on Mac OSX)
 
-Make sure to go to the root directory.
+Make sure GOPATH is set and clone into the correct directory under GOPATH
+```
+git clone https://github.com/ubiqueworks/go-clean-architecture.git $GOPATH/src/src/github.com/ubiqueworks/go-clean-architecture
+```
+
+Go to the root directory of the project.
+```
+cd $GOPATH/src/src/github.com/ubiqueworks/go-clean-architecture
+```
 
 Ensure dependencies
 

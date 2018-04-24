@@ -6,7 +6,7 @@
 * Bazel
 * GoImports
 
-#### Running the project (on Mac OSX)
+#### Running the project (tested on Mac OSX)
 
 Make sure GOPATH is set and clone into the correct directory under GOPATH
 ```

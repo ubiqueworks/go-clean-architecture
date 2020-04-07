@@ -1,3 +1,5 @@
+## IMPORTANT NOTE: I don't consider the example code to be best practice for Go development anymore
+
 ### Supporting code for [Go Clean](https://medium.com/@teo2k/go-clean-54c5cd866fe5) article on Medium
 
 #### Required software:
